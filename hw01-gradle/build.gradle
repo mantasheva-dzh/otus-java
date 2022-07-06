@@ -10,20 +10,9 @@ repositories {
 }
 
 dependencies {
-    implementation project('hw01-gradle')
+    implementation 'com.google.guava:guava:31.1-jre'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'otus.homework.App'
-        )
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
 }
 
 test {
