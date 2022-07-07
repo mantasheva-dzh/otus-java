@@ -5,16 +5,9 @@ plugins {
 group 'otus.homework'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
-    implementation 'com.google.guava:guava:31.1-jre'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-test {
-    useJUnitPlatform()
+    implementation 'com.google.guava:guava'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }

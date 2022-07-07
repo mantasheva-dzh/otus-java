@@ -1,18 +1,33 @@
 plugins {
     id 'java'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
 }
 
-group 'otus.homework'
-version '1.0-SNAPSHOT'
+allprojects {
+    group 'otus.homework'
+    version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'io.spring.dependency-management'
+    dependencyManagement {
+        dependencies {
+            dependency 'com.google.guava:guava:31.1-jre'
+            dependency 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+            dependency 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+        }
+    }
+    test {
+        useJUnitPlatform()
+    }
 }
 
 dependencies {
     implementation project('hw01-gradle')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 jar {
@@ -24,8 +39,4 @@ jar {
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
-}
-
-test {
-    useJUnitPlatform()
 }
